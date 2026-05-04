@@ -5,7 +5,10 @@ import com.ash.hms.dto.CPatientInfo;
 import com.ash.hms.dto.IPatientDto;
 import com.ash.hms.entities.PatientEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,5 +25,9 @@ public interface PatientRepository extends JpaRepository<PatientEntity , Long> {
 
     List<CBloodGroupStats> getBloodGroupStats();
 
-//    todo :  make controller to display blood groups and count
+//    update a field in database
+    @Transactional // either everything happens or nothing happens
+    @Modifying
+    @Query("update PatientEntity p set name=?1 where id=?2")
+    int updateName(String name , Long id);
 }
