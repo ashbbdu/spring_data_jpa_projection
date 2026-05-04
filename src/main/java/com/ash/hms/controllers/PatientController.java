@@ -20,7 +20,7 @@ public class PatientController {
 
     @GetMapping("/blood-group")
     public  List<CBloodGroupStats> getBloodGroupStats () {
-        return patientRepository.getBloodGroupStats();
+        return patientRepository.getBloodGroupStats(); //done
     }
 
 }
