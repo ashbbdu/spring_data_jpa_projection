@@ -7,6 +7,10 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -40,5 +44,7 @@ public class PatientEntity {
     private InsuranceEntity insuranceEntity;
 
 
-//    One patient can have multiple appointments
+    @OneToMany(mappedBy = "patientEntity") // mappedBy = "patientEntity" here we have to use the name of the private variable and not the column name
+    // Inverse of Appointment Many appointments will have 1 patient
+    private List<AppointmentEntity> appointments = new ArrayList<>();
 }
