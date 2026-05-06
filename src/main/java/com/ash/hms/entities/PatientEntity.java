@@ -32,4 +32,13 @@ public class PatientEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+//    Requirement => One patient will have one insurance.
+
+    @OneToOne()
+    @JoinColumn(name = "insurance_id")
+    private InsuranceEntity insuranceEntity;
+
+
+//    One patient can have multiple appointments
 }
