@@ -27,8 +27,13 @@ public class AppointmentEntity {
     @Column(nullable = false , length = 500)
     private String reason;
 
-    @ManyToOne // read like many Appointment will have one patient
-    @JoinColumn(name = "patient_id" , nullable = false) // nullable false here means dont create the appointment untila patient is not provided
+    @ManyToOne // read like many Appointment will have one patient or one patient can have multiple appointments
+    @JoinColumn(name = "patient_id" ) // nullable false here means dont create the appointment untila patient is not provided
 
     private PatientEntity patientEntity;
+
+
+    @ManyToOne // many appointments can have one doctor
+    @JoinColumn(name = "doctor_id")
+    private DoctorEntity doctorEntity;
 }

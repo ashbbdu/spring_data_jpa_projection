@@ -34,7 +34,7 @@ public class InsuranceEntity {
     @UpdateTimestamp
     private LocalDateTime updated_at;
 
-    @OneToOne(mappedBy = "insuranceEntity") // insuranceEntity this came from PatientEntity joincol name
-    @JoinColumn(name = "patient_id")
-    private PatientEntity patientEntity; // we dont want two source of truth , so make this inverse side , and this column wont be present in Insuances table
+//    @OneToOne(mappedBy = "doctorEntity") // insuranceEntity this came from PatientEntity joincol name
+//    @JoinColumn(name = "doctor_id")
+//    private AppointmentEntity appointmentEntity; // we dont want two source of truth , so make this inverse side , and this column wont be present in Insuances table
 }

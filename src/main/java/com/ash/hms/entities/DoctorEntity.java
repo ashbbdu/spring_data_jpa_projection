@@ -4,9 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -35,5 +36,8 @@ public class DoctorEntity {
 
     @UpdateTimestamp
     private LocalDateTime updated_at;
+
+    @OneToMany(mappedBy = "doctorEntity")
+    private List<AppointmentEntity> appointments = new ArrayList<>();
 
 }
