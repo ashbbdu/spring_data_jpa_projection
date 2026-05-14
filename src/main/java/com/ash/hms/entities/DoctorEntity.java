@@ -40,4 +40,11 @@ public class DoctorEntity {
     @OneToMany(mappedBy = "doctorEntity")
     private List<AppointmentEntity> appointments = new ArrayList<>();
 
+//    departments
+
+    @ManyToMany
+    @JoinTable(name = "doctors_departments" , joinColumns = @JoinColumn(name = "doctor_id")
+            , inverseJoinColumns = @JoinColumn(name = "department_id"))
+    private List<DepartmentEntity> departments = new ArrayList<>();
+
 }
