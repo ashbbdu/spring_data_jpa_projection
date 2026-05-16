@@ -33,7 +33,8 @@ public class DepartmentEntity {
 
 //    Each department will have 1 head doctor
     @OneToOne
-    @JoinColumn(name = "doctor_id" , nullable = false)
+    @JoinColumn(name = "head_doctor" , nullable = false)
+//    @JoinColumn(nullable = false)
     private DoctorEntity head_doctor;
 
 //    @OneToMany
