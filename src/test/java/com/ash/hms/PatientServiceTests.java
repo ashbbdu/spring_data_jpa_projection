@@ -1,11 +1,5 @@
 package com.ash.hms;
 
-import com.ash.hms.dto.CBloodGroupStats;
-import com.ash.hms.dto.CPatientInfo;
-import com.ash.hms.dto.IPatientDto;
-import com.ash.hms.entities.PatientEntity;
-import com.ash.hms.repositories.PatientRepository;
-import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
