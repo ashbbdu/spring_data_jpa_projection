@@ -10,6 +10,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -60,4 +61,11 @@ public class PatientEntity {
 
     @UpdateTimestamp
     private LocalDateTime updated_at;
+
+    @OneToOne
+    @JoinColumn(name = "insurance_id")
+    private  InsuranceEntity insurance;
+
+    @OneToMany(mappedBy = "patient")
+    private List<AppointmentEntity> appointments;
 }
