@@ -1,16 +1,16 @@
 package com.ash.hms.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "appointments")
@@ -34,11 +34,11 @@ public class AppointmentEntity {
     @UpdateTimestamp
     private LocalDateTime updated_at;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "patient_id")
     private PatientEntity patient;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "doctor_id")
     private DoctorEntity doctor;
 

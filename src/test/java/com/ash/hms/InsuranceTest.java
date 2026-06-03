@@ -1,6 +1,8 @@
 package com.ash.hms;
 
+import com.ash.hms.entities.AppointmentEntity;
 import com.ash.hms.entities.InsuranceEntity;
+import com.ash.hms.services.AppointmentService;
 import com.ash.hms.services.InsuranceService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ public class InsuranceTest {
     @Autowired
     private InsuranceService insuranceService;
 
+    @Autowired
+    private AppointmentService appointmentService;
 
     @Test
     void testAssignInsuranceToPatient () {
@@ -28,5 +32,14 @@ public class InsuranceTest {
     @Test
     void testDeletePatient () {
         insuranceService.deletePatient(1L);
+    }
+
+    @Test
+    void testCreateAppointment  () {
+        AppointmentEntity appointment = AppointmentEntity.builder()
+                .appointmentDateTime(LocalDateTime.of(2026 , 12 ,12 , 0 , 0, 0))
+                .reason("Typhoid").status(true).build();
+       var data = appointmentService.createAppointment(appointment , 1L , 1L);
+        System.out.println(data);
     }
 }

@@ -40,3 +40,13 @@ VALUES
     '1993-12-15 00:00:00',
     'O_NEGATIVE'
 );
+
+
+
+INSERT INTO doctors (name, specialization, email)
+VALUES
+('Dr. Rajesh Sharma', 'Cardiology', 'rajesh.sharma@hms.com'),
+('Dr. Priya Gupta', 'Neurology', 'priya.gupta@hms.com'),
+('Dr. Amit Verma', 'Orthopedics', 'amit.verma@hms.com'),
+('Dr. Neha Singh', 'Dermatology', 'neha.singh@hms.com'),
+('Dr. Vikram Mehta', 'Pediatrics', 'vikram.mehta@hms.com');
