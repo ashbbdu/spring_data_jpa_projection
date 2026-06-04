@@ -7,11 +7,12 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Builder
-@ToString // will remove this later
+//@ToString // will remove this later
 @Table(name = "insurances")
 public class InsuranceEntity {
     @Id

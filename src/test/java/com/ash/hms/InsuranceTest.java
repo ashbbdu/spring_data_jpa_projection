@@ -29,17 +29,24 @@ public class InsuranceTest {
 
     }
 
-    @Test
-    void testDeletePatient () {
-        insuranceService.deletePatient(1L);
-    }
+//    @Test
+//    void testDeletePatient () {
+//        insuranceService.deletePatient(1L);
+//    }
 
     @Test
     void testCreateAppointment  () {
         AppointmentEntity appointment = AppointmentEntity.builder()
                 .appointmentDateTime(LocalDateTime.of(2026 , 12 ,12 , 0 , 0, 0))
                 .reason("Typhoid").status(true).build();
-       var data = appointmentService.createAppointment(appointment , 1L , 1L);
-        System.out.println(data);
+//       var data = appointmentService.createAppointment(appointment , 1L , 1L);
+//        System.out.println(data);
     }
+
+    @Test
+    void testDeletePatient () {
+        insuranceService.deletePatient(1L);
+    }
+
+
 }

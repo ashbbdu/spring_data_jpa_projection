@@ -15,7 +15,6 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Table(name = "patients" , uniqueConstraints = {
         @UniqueConstraint(name = "unq_email" , columnNames = "email"),
         @UniqueConstraint(name = "unq_phone" , columnNames = "phone"),
@@ -62,10 +61,10 @@ public class PatientEntity {
     private LocalDateTime updated_at;
 
 //    @OneToOne(cascade = {CascadeType.PERSIST , CascadeType.MERGE , CascadeType.DETACH})
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL , orphanRemoval = true)
     @JoinColumn(name = "insurance_id")
     private  InsuranceEntity insurance;
 
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient" , cascade = CascadeType.ALL )
     private List<AppointmentEntity> appointments;
 }

@@ -21,7 +21,7 @@ public class InsuranceService {
     public InsuranceEntity assignInsuranceToPatient (InsuranceEntity insurance , Long patientId) {
         PatientEntity patient = patientRepository.findById(patientId).orElseThrow();
         patient.setInsurance(insurance);
-//        patientRepository.save(patient);
+        patientRepository.save(patient);
 
         insurance.setPatient(patient); // optional just to maintain bi-directional consistency
         return insurance;
@@ -32,5 +32,17 @@ public class InsuranceService {
 //        patientRepository.findById(patientId).orElseThrow();
 //        patientRepository.deleteById(patientId);
     }
+
+    @Transactional
+    public InsuranceEntity updateInsuranceOfPatient (InsuranceEntity insurance , Long patientId) {
+        PatientEntity patient = patientRepository.findById(patientId).orElseThrow();
+        patient.setInsurance(insurance);
+//        patientRepository.save(patient);
+
+        insurance.setPatient(patient); // optional just to maintain bi-directional consistency
+        return insurance;
+    }
+
+
 
 }

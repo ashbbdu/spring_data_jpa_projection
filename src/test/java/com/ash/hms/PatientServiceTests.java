@@ -1,5 +1,8 @@
 package com.ash.hms;
 
+import com.ash.hms.entities.PatientEntity;
+import com.ash.hms.services.InsuranceService;
+import com.ash.hms.services.PatientService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +14,13 @@ public class PatientServiceTests {
 
 //    @Autowired
 //    private PatientRepository patientRepository;
+
+
+    @Autowired
+    private PatientService patientService;
+
+    @Autowired
+    private InsuranceService insuranceService;
 
 //    @Test
 //    public void testPatient () {
@@ -72,4 +82,11 @@ public class PatientServiceTests {
 //            System.out.println(s);
 //        }
 //    }
+
+@Test
+void testRemoveInsuranceOfPatient () {
+    var insurance = patientService.removeInsuranceOfPatient(1L);
+    System.out.println(insurance);
+}
+
 }
