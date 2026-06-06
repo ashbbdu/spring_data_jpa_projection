@@ -1,4 +1,4 @@
-package com.ash.hms.dto;
+package com.ash.hms.dto.appointments;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

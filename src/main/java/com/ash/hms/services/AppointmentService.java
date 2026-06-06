@@ -1,18 +1,19 @@
 package com.ash.hms.services;
 
-import com.ash.hms.dto.AppointmentDto;
+import com.ash.hms.dto.appointments.AppointmentDto;
+import com.ash.hms.dto.appointments.AppointmentResponseDto;
 import com.ash.hms.entities.AppointmentEntity;
 import com.ash.hms.entities.DoctorEntity;
 import com.ash.hms.entities.PatientEntity;
 import com.ash.hms.repositories.AppointmentRepository;
 import com.ash.hms.repositories.DoctorRepository;
 import com.ash.hms.repositories.PatientRepository;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -32,6 +33,14 @@ public class AppointmentService {
 
         appointmentRepository.save(appointmentEntity);
         return modelMapper.map(appointmentEntity , AppointmentDto.class);
+
+    }
+
+    public List<AppointmentResponseDto> getAllAppointments () {
+        return appointmentRepository.findAllAppointmentWithPatientAndDoctor();
+//        return appointments.stream()
+//                .map(res -> modelMapper.map(res , AppointmentResponseDto.class))
+//                .toList();
 
     }
 }
