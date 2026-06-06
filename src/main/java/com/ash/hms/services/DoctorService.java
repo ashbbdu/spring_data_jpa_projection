@@ -43,7 +43,7 @@ public class DoctorService {
     }
 
     public List<DoctorDto> getAllDoctors () {
-       List<DoctorEntity> doctors = doctorRepository.findAll();
+       List<DoctorEntity> doctors = doctorRepository.getDoctorsAllDoctorsWithDepartment();
        return doctors.stream().map(res -> modelMapper.map(res , DoctorDto.class)).toList();
     }
 
