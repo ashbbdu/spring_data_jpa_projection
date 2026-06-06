@@ -34,7 +34,7 @@ public class InsuranceEntity {
     @UpdateTimestamp
     private LocalDateTime updated_at;
 
-    @OneToOne(mappedBy = "insurance")
+    @OneToOne(mappedBy = "insurance" , fetch = FetchType.LAZY)
     private PatientEntity patient;
 
 

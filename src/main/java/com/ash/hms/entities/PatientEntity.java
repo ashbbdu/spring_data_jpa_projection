@@ -61,10 +61,10 @@ public class PatientEntity {
     private LocalDateTime updated_at;
 
 //    @OneToOne(cascade = {CascadeType.PERSIST , CascadeType.MERGE , CascadeType.DETACH})
-    @OneToOne(cascade = CascadeType.ALL , orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL , orphanRemoval = true , fetch = FetchType.LAZY)
     @JoinColumn(name = "insurance_id")
     private  InsuranceEntity insurance;
 
-    @OneToMany(mappedBy = "patient" , cascade = CascadeType.ALL )
+    @OneToMany(mappedBy = "patient" , cascade = CascadeType.ALL , fetch = FetchType.LAZY )
     private List<AppointmentEntity> appointments;
 }

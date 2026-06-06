@@ -19,12 +19,12 @@ public class DepartmentEntity {
     @Column
     private String name;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doctor_id")
     private DoctorEntity doctor;
 
 
-    @ManyToMany(mappedBy = "departments")
+    @ManyToMany(mappedBy = "departments" , fetch = FetchType.LAZY)
     private List<DoctorEntity> doctors;
 
 }

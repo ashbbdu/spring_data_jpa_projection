@@ -1,11 +1,12 @@
 package com.ash.hms.controllers;
 
+import com.ash.hms.dto.AssignInsuranceDto;
+import com.ash.hms.dto.PatientDto;
+import com.ash.hms.dto.PatientListDto;
 import com.ash.hms.entities.PatientEntity;
 import com.ash.hms.services.PatientService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,7 +17,23 @@ public class PatientController {
     private final PatientService patientService;
 
     @GetMapping("/list")
-    List<PatientEntity> getAllPatients () {
+    List<PatientListDto> getAllPatients () {
         return patientService.getAllPatients();
+    }
+
+    @GetMapping("/list/v2")
+
+    public List<PatientListDto> findAllWithInsurance() {
+        return patientService.findAllWithInsurance();
+    }
+
+    @PostMapping("/add")
+    public PatientDto add (@RequestBody PatientDto patientDto) {
+       return patientService.addPatient(patientDto);
+    }
+
+    @PutMapping("/assign_insurance")
+    public void assignInsuranceToPatient (@RequestBody AssignInsuranceDto assignInsuranceDto) {
+        patientService.assignInsuranceToPatient(assignInsuranceDto.getPatientId() , assignInsuranceDto.getInsuranceId());
     }
 }

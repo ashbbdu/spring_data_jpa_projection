@@ -35,15 +35,15 @@ public class DoctorEntity {
     @UpdateTimestamp
     private LocalDateTime updated_at;
 
-    @OneToMany(mappedBy = "doctor")
+    @OneToMany(mappedBy = "doctor" ,fetch = FetchType.LAZY)
     private List<AppointmentEntity> appointments;
 
 
-    @OneToOne(mappedBy = "doctor")
+    @OneToOne(mappedBy = "doctor" , fetch = FetchType.LAZY)
     private DepartmentEntity head_department;
 
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "doctors_department",
     joinColumns = @JoinColumn(name = "doctor_id"),
