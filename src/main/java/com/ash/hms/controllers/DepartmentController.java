@@ -20,4 +20,5 @@ public class DepartmentController {
     public DepartmentDto addDepartment (@RequestBody DepartmentDto departmentDto) {
         return departmentService.addDepartment(departmentDto);
     }
+
 }

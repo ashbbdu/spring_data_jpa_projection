@@ -1,6 +1,8 @@
 package com.ash.hms.services;
 
+import com.ash.hms.dto.DoctorByIdDto;
 import com.ash.hms.dto.DoctorDto;
+import com.ash.hms.dto.PatientDto;
 import com.ash.hms.entities.DepartmentEntity;
 import com.ash.hms.entities.DoctorEntity;
 import com.ash.hms.repositories.DepartmentRepository;
@@ -45,6 +47,11 @@ public class DoctorService {
     public List<DoctorDto> getAllDoctors () {
        List<DoctorEntity> doctors = doctorRepository.getDoctorsAllDoctorsWithDepartment();
        return doctors.stream().map(res -> modelMapper.map(res , DoctorDto.class)).toList();
+    }
+
+    public DoctorByIdDto getDoctorById (Long doctorId) {
+        DoctorEntity doctor = doctorRepository.findById(doctorId).orElseThrow();
+        return modelMapper.map(doctor , DoctorByIdDto.class);
     }
 
 }
