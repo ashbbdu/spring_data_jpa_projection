@@ -22,7 +22,6 @@ public class PatientController {
     }
 
     @GetMapping("/list/v2")
-
     public List<PatientListDto> findAllWithInsurance() {
         return patientService.findAllWithInsurance();
     }

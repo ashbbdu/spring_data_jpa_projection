@@ -51,6 +51,7 @@ public class PatientService {
         return modelMapper.map(patient , PatientDto.class);
     }
 
+    @Transactional
     public void assignInsuranceToPatient (Long patientId , Long insuranceId) {
         PatientEntity patient = patientRepository.findById(patientId).orElseThrow();
         InsuranceEntity insurance = insuranceRepository.findById(insuranceId).orElseThrow();
