@@ -18,9 +18,16 @@ public class PatientDto {
     private String phone;
     private LocalDateTime birthDate;
 
+
     @Enumerated(EnumType.STRING)
     private GenderType gender;
 
     @Enumerated(EnumType.STRING)
     private BloodGroupType bloodGroup;
+
+    private LocalDateTime created_at;
+    private LocalDateTime updated_at;
+    private String createdBy;
+    private String updatedBy;
+
 }

@@ -6,6 +6,11 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,6 +20,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Audited
 @Table(name = "patients" , uniqueConstraints = {
         @UniqueConstraint(name = "unq_email" , columnNames = "email"),
         @UniqueConstraint(name = "unq_phone" , columnNames = "phone"),
@@ -26,11 +32,13 @@ indexes = {
         @Index(name = "idx_email_phone" , columnList = "email , phone"),
 }
 )
+//@Audited
 
-public class PatientEntity {
+public class PatientEntity extends AuditableEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
 
     @Column(nullable = false)
@@ -54,17 +62,33 @@ public class PatientEntity {
     @Column(nullable = false)
     private BloodGroupType bloodGroup;
 
-    @CreationTimestamp
-    private LocalDateTime created_at;
 
-    @UpdateTimestamp
-    private LocalDateTime updated_at;
 
+
+    @NotAudited
 //    @OneToOne(cascade = {CascadeType.PERSIST , CascadeType.MERGE , CascadeType.DETACH})
     @OneToOne(cascade = CascadeType.ALL , orphanRemoval = true , fetch = FetchType.LAZY)
     @JoinColumn(name = "insurance_id")
     private  InsuranceEntity insurance;
 
+    @NotAudited
     @OneToMany(mappedBy = "patient" , cascade = CascadeType.ALL , fetch = FetchType.LAZY )
     private List<AppointmentEntity> appointments;
+
+    @PrePersist
+    void beforeSave () {
+
+    }
+
+    @PreUpdate
+    void beforeUpdate () {
+
+    }
+
+    @PostPersist
+    void afterSave () {
+
+    }
+
+
 }

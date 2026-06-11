@@ -10,8 +10,10 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -68,5 +70,12 @@ public class PatientService {
     public List<PatientListDto> findAllWithInsurance() {
         List<PatientEntity> patients = patientRepository.findAllWithInsurance();
         return patients.stream().map(res -> modelMapper.map(res , PatientListDto.class)).toList();
+    }
+
+    public PatientDto updatePatient (Long patientId , String name) {
+        PatientEntity patient = patientRepository.findById(patientId).orElseThrow(() -> new NoSuchElementException("Patient not found !"));
+        patient.setName(name);
+        patientRepository.save(patient);
+        return modelMapper.map(patient , PatientDto.class);
     }
 }
