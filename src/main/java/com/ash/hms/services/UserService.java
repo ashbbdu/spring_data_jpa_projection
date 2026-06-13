@@ -1,0 +1,23 @@
+package com.ash.hms.services;
+
+import com.ash.hms.repositories.UserRepository;
+import lombok.RequiredArgsConstructor;
+import org.jspecify.annotations.NullMarked;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.util.NoSuchElementException;
+
+@Service
+@RequiredArgsConstructor
+@NullMarked
+public class UserService implements UserDetailsService {
+
+    private final UserRepository userRepository;
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByEmail(username).orElseThrow(() -> new NoSuchElementException("User not found !"));
+    }
+}
