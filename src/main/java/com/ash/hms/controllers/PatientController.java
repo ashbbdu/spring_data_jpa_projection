@@ -31,10 +31,10 @@ public class PatientController {
        return patientService.addPatient(patientDto);
     }
 
-    @PutMapping("/assign_insurance")
-    public void assignInsuranceToPatient (@RequestBody AssignInsuranceDto assignInsuranceDto) {
-        patientService.assignInsuranceToPatient(assignInsuranceDto.getPatientId() , assignInsuranceDto.getInsuranceId());
-    }
+//    @PutMapping("/assign_insurance")
+//    public void assignInsuranceToPatient (@RequestBody AssignInsuranceDto assignInsuranceDto) {
+//        patientService.assignInsuranceToPatient(assignInsuranceDto.getPatientId() , assignInsuranceDto.getInsuranceId());
+//    }
 
     @PutMapping("/update-patient/{patientId}/{name}")
     public PatientDto updatePatient (@PathVariable Long patientId , @PathVariable String name) {

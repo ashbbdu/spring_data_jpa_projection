@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
 
-@Service
+//@Service
 @RequiredArgsConstructor
 @NullMarked
 public class UserService implements UserDetailsService {

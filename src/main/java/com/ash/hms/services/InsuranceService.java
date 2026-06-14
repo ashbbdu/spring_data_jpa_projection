@@ -49,12 +49,12 @@ public class InsuranceService {
 //    }
 
 
-    public InsuranceDto addInsurance (InsuranceDto insuranceDto) {
-        InsuranceEntity insurance = modelMapper.map(insuranceDto , InsuranceEntity.class);
-        insuranceRepository.save(insurance);
-        return modelMapper.map(insurance , InsuranceDto.class);
-
-    }
+//    public InsuranceDto addInsurance (InsuranceDto insuranceDto) {
+//        InsuranceEntity insurance = modelMapper.map(insuranceDto , InsuranceEntity.class);
+//        insuranceRepository.save(insurance);
+//        return modelMapper.map(insurance , InsuranceDto.class);
+//
+//    }
 
 
 

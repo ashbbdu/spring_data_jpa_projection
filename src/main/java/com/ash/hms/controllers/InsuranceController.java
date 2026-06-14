@@ -19,10 +19,10 @@ public class InsuranceController {
     private final InsuranceService insuranceService;
     private final ModelMapper modelMapper;
 
-    @PostMapping(path = "/add")
-    public InsuranceDto addInsurance (@RequestBody InsuranceDto insuranceDto) {
-        return insuranceService.addInsurance(insuranceDto);
-    }
+//    @PostMapping(path = "/add")
+//    public InsuranceDto addInsurance (@RequestBody InsuranceDto insuranceDto) {
+//        return insuranceService.addInsurance(insuranceDto);
+//    }
 
 
 
