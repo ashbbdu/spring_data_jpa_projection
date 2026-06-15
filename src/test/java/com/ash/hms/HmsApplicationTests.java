@@ -15,8 +15,11 @@ class HmsApplicationTests {
 
 	@Test
 	void contextLoads() {
-		UserEntity user = new UserEntity(4L , "ash@gmail.com" , "abcde");
+		UserEntity user = new UserEntity(4L , "ash@gmail.com" , "abcde" , "ashish");
 		String token = jwtService.generateToken(user);
+
+		Long userId = jwtService.getUserIdFromToken(token);
+		System.out.println(userId +  " user id");
 		System.out.println(token);
 	}
 

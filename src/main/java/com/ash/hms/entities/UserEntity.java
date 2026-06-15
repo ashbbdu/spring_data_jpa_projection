@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 //@NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 //@RequiredArgsConstructor
 public class UserEntity implements UserDetails {
     @Id
@@ -23,6 +23,9 @@ public class UserEntity implements UserDetails {
 
     @Column(unique = true)
     private String email;
+
+    @Column
+    private String name;
 
     @Column
     private String password;
